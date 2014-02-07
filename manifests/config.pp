@@ -8,14 +8,6 @@ class gitlab::config inherits gitlab {
   }
 
   # gitlab
-  file { '/etc/nginx/conf.d/gitlab.conf':
-    ensure  => file,
-    content => template('gitlab/nginx-gitlab.conf.erb'),
-    owner   => root,
-    group   => root,
-    mode    => '0644',
-  }
-
   file { '/etc/default/gitlab':
     ensure  => file,
     content => template('gitlab/gitlab.default.erb'),
