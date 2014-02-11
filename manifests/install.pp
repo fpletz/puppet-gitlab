@@ -62,7 +62,7 @@ class gitlab::install inherits gitlab {
   }
 
   exec { 'install gitlab':
-    command => "bundle install --without development aws test ${gitlab_without_gems} --deployment",
+    command => "bundle install --jobs 3 --retry 5 --without development aws test ${gitlab_without_gems} --deployment",
     cwd     => "${git_home}/gitlab",
     unless  => 'bundle check',
     timeout => 0,
